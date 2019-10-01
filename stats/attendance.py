@@ -44,12 +44,13 @@ logger.debug(
 attendance.plot(x='year', y='attendance', figsize=(15, 7), kind='bar')
 # Axis Labels
 plt.xlabel('Year')
-plt.xlabel('Attendance')
+plt.ylabel('Attendance')
 plt.show()
 
 # Mean Line
 plt.axhline(
-        label=attendance['attendance'].mean(),
-        linestyle='dashed',
+        label='Mean',
+        y=attendance['attendance'].mean(),
+        linestyle='--',
         color='green'
         )
