@@ -70,4 +70,4 @@ games = games.fillna(' ')
 games.loc[:, 'type'] = pd.Categorical(games.loc[:, 'type'])
 
 # Print DataFrame
-print(games.head())
+# print(games.head())
