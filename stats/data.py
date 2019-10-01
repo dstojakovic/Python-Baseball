@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 log_format = '%(asctime)s - %(name)s - %(levelname)s'
 log_format += ' - %(message)s [%(pathname)s:%(lineno)d]'
-formatter = logging.Formatter()
+formatter = logging.Formatter(log_format)
 stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.INFO)
 stream_handler.setFormatter(formatter)
@@ -22,19 +22,22 @@ game_files.sort()
 logger.info('Loaded %s game file names.', len(game_files))
 
 column_names = [
-        'type',
-        'multi2',
-        'multi3',
-        'multi4',
-        'multi5',
-        'multi6',
-        'event',
         ]
 
 game_frames = []
 for game_file in game_files:
-    # read csv file
-    game_frame = pd.read_csv(game_file, names=column_names)
+    # load each csv file into pandas data frame
+    game_frame = pd.read_csv(
+            game_file,
+            names=[
+                'type',
+                'multi2',
+                'multi3',
+                'multi4',
+                'multi5',
+                'multi6',
+                'event',
+                ])
     game_frames.append(game_frame)
 
 logger.info('Loaded %s game frames.', len(game_frames))
